@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Chargeway - helps you explore hybrid and electric vehicles, compare specs, and find EV charging stations near you - all in one place">
+    <meta name="keywords" content="electric cars, hybrid vehicles, EV charging stations, car search, electric vehicle specs, charging map, EV finder, hybrid cars, sustainable driving">
+    <meta property="og:title" content="Chargeway — Find Your Car. Find Your Charge.">
+    <meta property="og:description" content="Explore hybrid and electric vehicles, compare specs and find charging stations near you.">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+    <link rel="canonical" href="https://chargeway.mitrevdarko.dev/">
+    <meta name="author" content="Mitrev Darko">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Chargeway — Find Your Car. Find Your Charge.">
+    <meta property="og:description" content="Explore hybrid and electric vehicles, compare specs and find charging stations near you.">
+    <meta property="og:image" content="https://res.cloudinary.com/dwybdunca/image/upload/v1776488886/Graph-skyCast_mia77t.png">
+    <meta property="og:url" content="https://chargeway.mitrevdarko.dev/">
+    <meta property="og:type" content="website">
+    <title>Chargeway</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+<body>
+  <%- include('partials/header', { navLinks, currentPath }) %>
+
+  <!-- Hero Section -->
+<section id="hero" class="flex items-center py-36 px-6 lg:px-16 max-w-6xl mx-auto">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-0 items-center w-full">
+    
+    <!-- Left: Text -->
+    <div class="space-y-6">
+      <span class="inline-block items-center gap-2 text-xs font-medium text-emerald-600 border border-emerald-200 bg-emerald-50 px-3 py-1 rounded-full">
+        <%= t.hero.badge %>
+      </span>
+
+      <h1 class="text-4xl lg:text-5xl font-black text-gray-900 leading-tight">
+        <%= t.hero.title1 %><br>
+        <%= t.hero.title2 %>
+      </h1>
+
+      <p class="text-gray-500 text-base leading-relaxed max-w-md">
+        <%= t.hero.description %>
+      </p>
+
+      <div class="flex items-center gap-3 pt-2">
+        <a href="/cars" class="bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-black px-5 py-2.5 rounded-full transition-colors">
+          <%= t.hero.button1 %>
+        </a>
+        <a href="/chargers" class="border border-gray-200 hover:border-gray-300 hover:text-gray-700 hover:font-black text-gray-400 text-sm font-black px-5 py-2.5 rounded-full transition-colors">
+          <%= t.hero.button2 %>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: Car Image -->
+    <div class="flex items-center justify-center">
+      <img 
+        src="/images/pngegg.png" 
+        alt="Electric Car" 
+        class="w-full max-w-lg lg:max-w-2xl object-contain drop-shadow-sm"
+      >
+    </div>
+
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="py-20 px-6 lg:px-16 border-t border-gray-100">
+  <div class="max-w-6xl mx-auto">
+
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <span class="text-xs font-medium text-emerald-600 uppercase tracking-widest">
+        <%= t.howItWorks.span %>
+      </span>
+      <h2 class="mt-3 text-3xl font-black text-gray-900">
+        <%= t.howItWorks.title %>
+      </h2>
+      <p class="mt-3 text-gray-500 text-sm max-w-md mx-auto">
+        <%= t.howItWorks.subtitle %>
+      </p>
+    </div>
+
+    <!-- Steps -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+
+      <!-- Step 1 -->
+      <div class="flex flex-col items-center text-center space-y-4">
+        <div class="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center">
+          <i data-lucide="search" class="w-5 h-5 text-emerald-500"></i>
+        </div>
+        <h3 class="text-base font-black text-gray-900"><%= t.howItWorks.step1Title %></h3>
+        <p class="text-sm text-gray-500 leading-relaxed"><%= t.howItWorks.step1Desc %></p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="flex flex-col items-center text-center space-y-4">
+        <div class="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center">
+          <i data-lucide="bar-chart-2" class="w-5 h-5 text-emerald-500"></i>
+        </div>
+        <h3 class="text-base font-black text-gray-900"><%= t.howItWorks.step2Title %></h3>
+        <p class="text-sm text-gray-500 leading-relaxed"><%= t.howItWorks.step2Desc %></p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="flex flex-col items-center text-center space-y-4">
+        <div class="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center">
+          <i data-lucide="map-pin" class="w-5 h-5 text-emerald-500"></i>
+        </div>
+        <h3 class="text-base font-black text-gray-900"><%= t.howItWorks.step3Title %></h3>
+        <p class="text-sm text-gray-500 leading-relaxed"><%= t.howItWorks.step3Desc %></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Cars Section -->
+<section id="cars" class="pt-24 pb-12 px-5 lg:px-16 bg-[#f9f8f6]">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-10">
+      <h2 class="text-3xl font-black text-gray-900">
+        <%= t.explore.cars_title %>
+      </h2>
+      <p class="text-gray-500 mt-3">
+        <%= t.explore.cars_subtitle %>
+      </p>
+    </div>
+
+    <!-- Search -->
+    <div class="flex flex-col md:flex-row gap-4 mb-12">
+      <input 
+        id="searchInput"
+        type="text"
+        placeholder="Search by brand or model..."
+        class="flex-1 px-4 py-3 rounded-sm border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+      >
+      <button id="searchBtn" class="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-sm">
+        <%= t.explore.cars_button %>
+      </button>
+    </div>
+
+   
+    <div id="carGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  <% vehicles.forEach(vehicle => { %>
+  <div class="bg-white rounded-sm p-6 border border-gray-100">
+    <% if (vehicle.image_url) { %>
+     <img src="<%= vehicle.image_url %>" alt="<%= vehicle.make %> <%= vehicle.model %>" class="w-full h-40 object-cover rounded mb-4">
+    <% } else { %>
+      <div class="w-full h-40 bg-gray-100 rounded flex items-center justify-center mb-4">
+        <span class="text-4xl font-bold text-gray-200"><%= vehicle.make[0] %></span>
+      </div>
+<% } %>
+    <h3 class="font-black text-gray-900 text-lg">
+      <%= vehicle.make %> <%= vehicle.model %>
+    </h3>
+    <p class="text-sm text-gray-500 mt-1">
+      <%= vehicle.year %> · <%= vehicle.vehicle_style %> · <%= vehicle.driven_wheels %>
+    </p>
+    <p class="text-emerald-600 font-semibold mt-2">
+      $<%= vehicle.msrp ? vehicle.msrp.toLocaleString() : 'N/A' %>
+    </p>
+    <div class="flex gap-3 mt-2">
+      <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full"><%= vehicle.fuel_type %></span>
+      <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full"><%= vehicle.horsepower ? vehicle.horsepower + ' hp' : 'N/A' %></span>
+    </div>
+    <a 
+      href="/cars/<%= vehicle.make %>-<%= vehicle.model %>"
+      class="inline-block mt-4 text-sm font-black text-emerald-600 hover:text-emerald-700"
+    >
+      <%= t.explore.cars_button_2 %> →
+    </a>
+  </div>
+  <% }) %>
+</div>
+<p id="noResults" class="hidden text-center text-gray-400 text-sm mt-10">No vehicles found.</p>
+  </div>
+</section>
+
+<!-- Stats Section -->
+<div class="flex flex-wrap gap-12  justify-center py-12 border-y border-gray-100">
+  <div>
+    <p class="text-2xl font-black text-gray-900"><%= stats.total %></p>
+    <p class="text-sm text-gray-400"><%= t.stats.stats_1 %></p>
+  </div>
+  <div class="w-px bg-gray-100"></div>
+  <div>
+    <p class="text-2xl font-black text-gray-900"><%= stats.brands %></p>
+    <p class="text-sm text-gray-400"><%= t.stats.stats_2 %></p>
+  </div>
+  <div class="w-px bg-gray-100"></div>
+  <div>
+    <p class="text-2xl font-black text-gray-900"><%= new Date().getFullYear() - stats.oldest_year %>+</p>
+    <p class="text-sm text-gray-400"><%= t.stats.stats_3 %></p>
+  </div>
+  <div class="w-px bg-gray-100"></div>
+  <div>
+    <p class="text-2xl font-black text-gray-900"><%= stats.with_images %></p>
+    <p class="text-sm text-gray-400"><%= t.stats.stats_4 %></p>
+  </div>
+</div>
+
+
+ <!-- Most Popular -->
+<div class="mt-8 mb-10 ml-6 lg:ml-4">
+  <h2 class="text-2xl font-black text-gray-900 mb-1"><%= t.most_popular.popular_title %></h2>
+  <p class="text-sm text-gray-400 mb-8"><%= t.most_popular.popular_subtitle %></p>
+  
+  <div class="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+    <% popular.forEach(vehicle => { %>
+    <div class="flex-shrink-0 w-64 bg-white rounded-sm border border-gray-100 overflow-hidden">
+      <% if (vehicle.image_url) { %>
+        <img src="<%= vehicle.image_url %>" alt="<%= vehicle.make %> <%= vehicle.model %>" class="w-full h-48 object-cover">
+      <% } else { %>
+        <div class="w-full h-36 bg-gray-100 flex items-center justify-center">
+          <span class="text-4xl font-bold text-gray-200"><%= vehicle.make[0] %></span>
+        </div>
+      <% } %>
+      <div class="p-4">
+        <div class="flex items-center justify-between mb-1">
+          <h3 class="font-black text-gray-900 text-sm"><%= vehicle.make %> <%= vehicle.model %></h3>
+          <span class="text-xs text-emerald-600 font-medium"><%= vehicle.popularity %></span>
+        </div>
+        <p class="text-xs text-gray-400 mb-2"><%= vehicle.year %> · <%= vehicle.vehicle_style %></p>
+        <p class="text-emerald-600 font-semibold text-sm mb-3">$<%= vehicle.msrp ? vehicle.msrp.toLocaleString() : 'N/A' %></p>
+        <a href="/cars/<%= vehicle.make %>-<%= vehicle.model %>" class="text-xs font-black text-gray-700 hover:text-emerald-600">
+          <%= t.most_popular.popular_button %> →
+        </a>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</div>
+
+<!-- Charger Finder Teaser -->
+<div class="mt-16 mb-10 bg-gray-900 rounded-sm p-10 flex flex-col md:flex-row items-center justify-between gap-6">
+  <div>
+    <p class="text-emerald-400 text-xs uppercase tracking-widest mb-2"><%= t.most_popular.charging_span %></p>
+    <h2 class="text-2xl font-black text-white mb-2"><%= t.most_popular.charging_title %></h2>
+    <p class="text-gray-400 text-sm"><%= t.most_popular.charging_subtitle %></p>
+  </div>
+  <div class="flex gap-3 w-full md:w-auto">
+    <input 
+      id="chargerLocation"
+      type="text" 
+      placeholder="Enter city or address..."
+      class="flex-1 md:w-72 px-4 py-3 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+    >
+    <button 
+      onclick="window.location.href='/chargers?location=' + encodeURIComponent(document.getElementById('chargerLocation').value)"
+      class="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-sm text-sm whitespace-nowrap"
+    >
+      <%= t.most_popular.charging_button %>
+    </button>
+  </div>
+</div>
+
+
+<!-- EV Facts -->
+<div class="mt-16 mb-10 px-6 lg:px-10">
+  <p class="text-xs text-gray-400 uppercase tracking-widest mb-2"><%= t.EV_Facts.EV_title %></p>
+  <h2 class="text-2xl font-black text-gray-900 mb-6"><%= t.EV_Facts.EV_subtitle %></h2>
+  
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    <div class="bg-white border border-gray-100 rounded-sm p-6">
+      <p class="text-4xl font-semibold text-emerald-500 mb-2">60%</p>
+      <p class="text-sm font-black text-gray-900 mb-1"><%= t.EV_Facts.EV_fact1 %></p>
+      <p class="text-xs text-gray-400"><%= t.EV_Facts.EV_fact2 %></p>
+    </div>
+    <div class="bg-white border border-gray-100 rounded-sm p-6">
+      <p class="text-4xl font-semibold text-emerald-500 mb-2">40%</p>
+      <p class="text-sm font-black text-gray-900 mb-1"><%= t.EV_Facts.EV_fact3 %></p>
+      <p class="text-xs text-gray-400"><%= t.EV_Facts.EV_fact4 %></p>
+    </div>
+    <div class="bg-white border border-gray-100 rounded-sm p-6">
+      <p class="text-4xl font-semibold text-emerald-500 mb-2">800+</p>
+      <p class="text-sm font-black text-gray-900 mb-1"><%= t.EV_Facts.EV_fact5 %></p>
+      <p class="text-xs text-gray-400"><%= t.EV_Facts.EV_fact6 %></p>
+    </div>
+    <div class="bg-white border border-gray-100 rounded-sm p-6">
+      <p class="text-4xl font-semibold text-emerald-500 mb-2">20min</p>
+      <p class="text-sm font-black text-gray-900 mb-1"><%= t.EV_Facts.EV_fact7 %></p>
+      <p class="text-xs text-gray-400"><%= t.EV_Facts.EV_fact8 %></p>
+    </div>
+  </div>
+</div>
+
+<!-- Data section -->
+<div class="mt-24 mb-10 grid grid-cols-1 px-10 lg:grid-cols-2 gap-12 items-start">
+  
+  <!-- Left — text -->
+  <div>
+    <p class="text-xs text-gray-400 uppercase tracking-widest mb-2"><%= t.database.database_span %></p>
+    <h2 class="text-2xl font-black text-gray-900 mb-4"><%= t.database.database_title %></h2>
+    <p class="text-sm text-gray-500 leading-relaxed mb-6"><%= t.database.database_subtitle %></p>
+    <div class="grid grid-cols-2 gap-4">
+      <div class="bg-gray-50 rounded-sm p-4">
+        <p class="text-2xl font-black text-gray-900"><%= stats.total %></p>
+        <p class="text-xs text-gray-400 mt-1"><%= t.database.database_stat1 %></p>
+      </div>
+      <div class="bg-gray-50 rounded-sm p-4">
+        <p class="text-2xl font-black text-gray-900"><%= stats.brands %></p>
+        <p class="text-xs text-gray-400 mt-1"><%= t.database.database_stat2 %></p>
+      </div>
+      <div class="bg-gray-50 rounded-sm p-4">
+        <p class="text-2xl font-black text-gray-900"><%= stats.with_images %></p>
+        <p class="text-xs text-gray-400 mt-1"><%= t.database.database_stat4 %></p>
+      </div>
+      <div class="bg-gray-50 rounded-sm p-4">
+        <p class="text-2xl font-black text-gray-900"><%= new Date().getFullYear() - stats.oldest_year %>+</p>
+        <p class="text-xs text-gray-400 mt-1"><%= t.database.database_stat3 %></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right — table -->
+  <div>
+    <p class="text-xs text-gray-400 uppercase tracking-widest mb-4"><%= t.database.database_stat5 %></p>
+    <div class="border border-gray-100 rounded-sm overflow-hidden">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-100">
+            <th class="text-left text-xs text-gray-400 font-black px-4 py-3"><%= t.database.database_li1 %></th>
+            <th class="text-right text-xs text-gray-400 font-black px-4 py-3"><%= t.database.database_li2 %></th>
+            <th class="text-right text-xs text-gray-400 font-black px-4 py-3"><%= t.database.database_li3 %></th>
+            <th class="text-right text-xs text-gray-400 font-black px-4 py-3"><%= t.database.database_li4 %></th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-50">
+          <% fuelstats.forEach(row => { %>
+          <tr class="hover:bg-gray-50 transition">
+            <td class="px-4 py-3 text-gray-700 capitalize"><%= row.fuel_type %></td>
+            <td class="px-4 py-3 text-right font-black text-gray-500"><%= Number(row.count).toLocaleString() %></td>
+            <td class="px-4 py-3 text-right font-black text-gray-500">$<%= Number(row.avg_price).toLocaleString() %></td>
+            <td class="px-4 py-3 text-right font-black text-gray-500"><%= row.avg_hp ? row.avg_hp + ' hp' : '—' %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+ <%- include('partials/footer') %>
+
+<script>
+  lucide.createIcons();
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const input      = document.getElementById('searchInput');
+    const typeFilter = document.getElementById('typeFilter');
+    const searchBtn  = document.getElementById('searchBtn');
+    const grid       = document.getElementById('carGrid');
+    const noResults  = document.getElementById('noResults');
+
+    if (!input || !searchBtn || !grid) return;
+
+    async function doSearch() {
+      const q = input.value.trim() || typeFilter.value.trim();
+      if (!q) {
+        location.reload();
+        return;
+      }
+      const res  = await fetch(`/search?q=${encodeURIComponent(q)}`);
+      const cars = await res.json();
+      if (cars.length === 0) {
+        grid.innerHTML = '';
+        noResults.classList.remove('hidden');
+        return;
+      }
+      noResults.classList.add('hidden');
+      grid.innerHTML = cars.map(v => `
+        <div class="bg-white rounded-sm p-6 border border-gray-100">
+          <img src="${v.image_url}" alt="${v.make} ${v.model}" class="w-full h-40 object-cover rounded mb-4">
+          <h3 class="font-semibold text-gray-900 text-lg">${v.make} ${v.model}</h3>
+          <p class="text-sm text-gray-500 mt-1">${v.year} · ${v.vehicle_style} · ${v.driven_wheels}</p>
+          <p class="text-emerald-600 font-semibold mt-2">$${v.msrp ? v.msrp.toLocaleString() : 'N/A'}</p>
+          <div class="flex gap-3 mt-2">
+            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">${v.fuel_type}</span>
+            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">${v.horsepower ? v.horsepower + ' hp' : 'N/A'}</span>
+          </div>
+          <a href="/cars/${v.make}-${v.model}" class="inline-block mt-4 text-sm font-medium text-emerald-600 hover:text-emerald-700">
+            View Details →
+          </a>
+        </div>
+      `).join('');
+    }
+
+    searchBtn.addEventListener('click', doSearch);
+    input.addEventListener('keydown', (e) => { if (e.key === 'Enter') doSearch(); });
+    typeFilter.addEventListener('change', doSearch);
+    resetBtn.addEventListener('click', () => {
+      input.value = '';
+      typeFilter.value = '';
+      location.reload();
+    });
+  });
+</script>

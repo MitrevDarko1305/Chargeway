@@ -1,0 +1,52 @@
+
+<footer class="border-t border-gray-100 mt-16 bg-white">
+  <div class="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-3 gap-10">
+
+    <!-- Brand -->
+    <div>
+      <a href="/" class="flex items-center gap-1 text-lg font-semibold mb-3">
+        <span>Charge<span class="text-emerald-500">way</span></span>
+        <i data-lucide="zap" class="w-5 h-5 text-emerald-500"></i>
+      </a>
+      <p class="text-xs text-gray-400 leading-relaxed mb-4"> <%= t.footer.footer_span_1 %></p>
+      <p class="text-xs text-gray-300">Built by <a href="https://mitrevdarko.dev" target="_blank" class="text-emerald-500 hover:text-emerald-600">Mitrev Design</a></p>
+    </div>
+
+    <!-- Explore -->
+    <div>
+      <p class="text-xs font-medium uppercase tracking-widest text-gray-400 mb-4"><%= t.footer.footer_ul_title %></p>
+      <ul class="flex flex-col gap-2">
+        <li><a href="/" class="text-sm text-gray-500 hover:text-emerald-500 transition"><%= t.footer.footer_li1 %></a></li>
+        <li><a href="/cars" class="text-sm text-gray-500 hover:text-emerald-500 transition"><%= t.footer.footer_li2 %></a></li>
+        <li><a href="/chargers" class="text-sm text-gray-500 hover:text-emerald-500 transition"><%= t.footer.footer_li3 %></a></li>
+        <li><a href="/about" class="text-sm text-gray-500 hover:text-emerald-500 transition"><%= t.footer.footer_li4 %></a></li>
+      </ul>
+    </div>
+
+    <!-- Data sources -->
+    <div>
+      <p class="text-xs font-medium uppercase tracking-widest text-gray-400 mb-4"><%= t.footer.footer_source %></p>
+      <ul class="flex flex-col gap-2">
+        <li><a href="https://vpic.nhtsa.dot.gov" target="_blank" class="text-sm text-gray-500 hover:text-emerald-500 transition">NHTSA vPIC API</a></li>
+        <li><a href="https://openchargemap.org" target="_blank" class="text-sm text-gray-500 hover:text-emerald-500 transition">Open Charge Map</a></li>
+        <li><a href="https://unsplash.com" target="_blank" class="text-sm text-gray-500 hover:text-emerald-500 transition">Unsplash</a></li>
+        <li><a href="https://www.kaggle.com/datasets/CooperUnion/cardataset" target="_blank" class="text-sm text-gray-500 hover:text-emerald-500 transition">Kaggle Car Dataset</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="border-t border-gray-100 px-6 py-4">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <p class="text-xs font-black text-gray-300">© <%= new Date().getFullYear() %> Chargeway · Mitrev Design</p>
+      <div class="flex items-center gap-2">
+        <a href="/lang/en" class="text-xs <%= lang === 'en' ? 'text-emerald-500' : 'text-gray-400 hover:text-gray-700' %> transition">EN</a>
+        <span class="text-gray-200">|</span>
+        <a href="/lang/de" class="text-xs <%= lang === 'de' ? 'text-emerald-500' : 'text-gray-400 hover:text-gray-700' %> transition">DE</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

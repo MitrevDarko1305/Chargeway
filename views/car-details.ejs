@@ -1,0 +1,150 @@
+
+  <%- include('partials/header', { navLinks, currentPath }) %>
+<section class="py-16 px-6 lg:px-16 max-w-4xl">
+ <!-- Hero row -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-10">
+  <% if (vehicle.image_url) { %>
+    <img src="<%= vehicle.image_url %>" alt="<%= vehicle.make %> <%= vehicle.model %>" class="w-full rounded-sm object-cover">
+  <% } else { %>
+    <div class="w-full h-60 bg-gray-100 rounded flex items-center justify-center">
+      <span class="text-6xl font-bold text-gray-200"><%= vehicle.make[0] %></span>
+    </div>
+  <% } %>
+  <div>
+    <p class="text-xs text-gray-400 uppercase tracking-widest mb-1"><%= vehicle.driven_wheels %> · <%= vehicle.vehicle_style %></p>
+    <h1 class="text-3xl font-semibold mb-2"><%= vehicle.make %> <%= vehicle.model %></h1>
+    <p class="text-2xl text-black font-medium mb-4">$<%= vehicle.msrp ? vehicle.msrp.toLocaleString() : 'N/A' %></p>
+    <span class="text-sm px-3 py-1 rounded-sm bg-green-100 text-green-800 mr-2"><%= vehicle.fuel_type %></span>
+    <span class="text-sm px-3 py-1 rounded-sm bg-gray-100 text-gray-600 mr-2"><%= vehicle.year %></span>
+    <span class="text-sm px-3 py-1 rounded-sm bg-blue-50 text-blue-700"><%= vehicle.driven_wheels %></span>
+  </div>
+</div>
+
+  <% if (vehicle.description) { %>
+<p class="text-gray-600 text-base leading-relaxed mb-10 border-l-4 border-green-500 pl-4">
+  <%= vehicle.description %>
+</p>
+<% } %>
+<!-- Pricing -->
+<h2 class="text-xs font-medium uppercase tracking-widest text-gray-400 mb-3">Pricing</h2>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-10">
+  <div class="bg-gray-50 rounded-xl p-4">
+    <p class="text-xs text-gray-500 mb-1">MSRP</p>
+    <p class="text-xl font-medium">$<%= vehicle.msrp ? vehicle.msrp.toLocaleString() : 'N/A' %></p>
+  </div>
+  <div class="bg-gray-50 rounded-xl p-4">
+    <p class="text-xs text-gray-500 mb-1">Popularity Score</p>
+    <p class="text-xl font-medium"><%= vehicle.popularity || 'N/A' %></p>
+  </div>
+</div>
+
+<!-- Performance -->
+<h2 class="text-xs font-medium uppercase tracking-widest text-gray-400 mb-3">Performance</h2>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-10">
+  <% if (vehicle.horsepower) { %>
+  <div class="bg-gray-50 rounded-xl p-4">
+    <p class="text-xs text-gray-500 mb-1">Horsepower</p>
+    <p class="text-xl font-medium"><%= vehicle.horsepower %> hp</p>
+  </div>
+  <% } %>
+  <% if (vehicle.cylinders) { %>
+  <div class="bg-gray-50 rounded-xl p-4">
+    <p class="text-xs text-gray-500 mb-1">Cylinders</p>
+    <p class="text-xl font-medium"><%= vehicle.cylinders %></p>
+  </div>
+  <% } %>
+  <% if (vehicle.transmission) { %>
+  <div class="bg-gray-50 rounded-xl p-4">
+    <p class="text-xs text-gray-500 mb-1">Transmission</p>
+    <p class="text-xl font-medium"><%= vehicle.transmission %></p>
+  </div>
+  <% } %>
+  <% if (vehicle.driven_wheels) { %>
+  <div class="bg-gray-50 rounded-xl p-4">
+    <p class="text-xs text-gray-500 mb-1">Drive Type</p>
+    <p class="text-xl font-medium"><%= vehicle.driven_wheels %></p>
+  </div>
+  <% } %>
+</div>
+
+<!-- Efficiency -->
+<h2 class="text-xs font-medium uppercase tracking-widest text-gray-400 mb-3">Efficiency</h2>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-10">
+  <% if (vehicle.highway_mpg) { %>
+  <div class="bg-gray-50 rounded-xl p-4">
+    <p class="text-xs text-gray-500 mb-1">Highway MPG</p>
+    <p class="text-xl font-medium"><%= vehicle.highway_mpg %> mpg</p>
+  </div>
+  <% } %>
+  <% if (vehicle.city_mpg) { %>
+  <div class="bg-gray-50 rounded-xl p-4">
+    <p class="text-xs text-gray-500 mb-1">City MPG</p>
+    <p class="text-xl font-medium"><%= vehicle.city_mpg %> mpg</p>
+  </div>
+  <% } %>
+  <% if (vehicle.fuel_type) { %>
+  <div class="bg-gray-50 rounded-xl p-4">
+    <p class="text-xs text-gray-500 mb-1">Fuel Type</p>
+    <p class="text-xl font-medium"><%= vehicle.fuel_type %></p>
+  </div>
+  <% } %>
+</div>
+
+<!-- Details -->
+<h2 class="text-xs font-medium uppercase tracking-widest text-gray-400 mb-3">Details</h2>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-10">
+  <% if (vehicle.vehicle_size) { %>
+  <div class="bg-gray-50 rounded-xl p-4">
+    <p class="text-xs text-gray-500 mb-1">Vehicle Size</p>
+    <p class="text-xl font-medium"><%= vehicle.vehicle_size %></p>
+  </div>
+  <% } %>
+  <% if (vehicle.num_doors) { %>
+  <div class="bg-gray-50 rounded-xl p-4">
+    <p class="text-xs text-gray-500 mb-1">Doors</p>
+    <p class="text-xl font-medium"><%= vehicle.num_doors %></p>
+  </div>
+  <% } %>
+  <% if (vehicle.market_category) { %>
+  <div class="bg-gray-50 rounded-xl p-4">
+    <p class="text-xs text-gray-500 mb-1">Category</p>
+    <p class="text-xl font-medium"><%= vehicle.market_category %></p>
+  </div>
+  <% } %>
+</div>
+
+<!-- Other models from NHTSA -->
+<% if (relatedModels.length > 0) { %>
+<h2 class="text-xs font-medium uppercase tracking-widest text-gray-400 mb-3">Other <%= vehicle.make %> models</h2>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-10">
+  <% relatedModels.forEach(model => { %>
+  <div class="border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-700"><%= model.Model_Name %></div>
+  <% }) %>
+</div>
+<% } %>
+
+<!-- Vehicle types from NHTSA -->
+<% if (vehicleTypes.length > 0) { %>
+<h2 class="text-xs font-medium uppercase tracking-widest text-gray-400 mb-3">Vehicle types</h2>
+<div class="flex flex-wrap gap-2 mb-10">
+  <% vehicleTypes.forEach(type => { %>
+  <span class="bg-gray-100 text-gray-600 rounded-full px-4 py-1 text-sm"><%= type.VehicleTypeName %></span>
+  <% }) %>
+</div>
+<% } %>
+
+<!-- Recalls from NHTSA -->
+<% if (recalls && recalls.length > 0) { %>
+<h2 class="text-xs font-medium uppercase tracking-widest text-gray-400 mb-3">Recalls</h2>
+<div class="border border-gray-200 rounded-xl divide-y divide-gray-100">
+  <% recalls.forEach(recall => { %>
+  <div class="p-4">
+    <p class="text-sm font-medium text-gray-800 mb-1"><%= recall.Component %></p>
+    <p class="text-xs text-gray-500"><%= recall.Summary %></p>
+  </div>
+  <% }) %>
+</div>
+<% } %>
+
+</section>
+<%- include('partials/footer') %>

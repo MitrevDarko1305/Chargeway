@@ -1,0 +1,109 @@
+<%- include('partials/header', { navLinks, currentPath }) %>
+
+<section class="max-w-6xl mx-auto px-6 py-16">
+
+  <!-- Hero -->
+  <div class="max-w-2xl mb-16">
+    <p class="text-xs text-gray-400 uppercase tracking-widest mb-3">About Chargeway</p>
+    <h1 class="text-4xl font-semibold text-gray-900 mb-4">Find your car. Find your charge.</h1>
+    <p class="text-gray-500 leading-relaxed">Chargeway is a vehicle discovery platform built for the modern driver — whether you're shopping for your next EV, comparing specs across brands, or just trying to find the nearest charging station on your commute.</p>
+  </div>
+
+  <!-- What it does -->
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
+    <div class="bg-gray-50 rounded-sm p-6">
+      <p class="text-2xl mb-3">🚗</p>
+      <h3 class="font-semibold text-gray-900 mb-2">Explore vehicles</h3>
+      <p class="text-xs text-gray-500 leading-relaxed">Browse over 11,000 cars across 48 brands — from everyday commuters to high-performance exotics. Filter by fuel type, body style and price.</p>
+    </div>
+    <div class="bg-gray-50 rounded-sm p-6">
+      <p class="text-2xl mb-3">📊</p>
+      <h3 class="font-semibold text-gray-900 mb-2">Compare specs</h3>
+      <p class="text-xs text-gray-500 leading-relaxed">Get detailed specs, safety recall information and manufacturer data pulled live from the NHTSA database for every vehicle.</p>
+    </div>
+    <div class="bg-gray-50 rounded-sm p-6">
+      <p class="text-2xl mb-3">⚡</p>
+      <h3 class="font-semibold text-gray-900 mb-2">Find chargers</h3>
+      <p class="text-xs text-gray-500 leading-relaxed">Locate nearby EV charging stations anywhere in the world using the Open Charge Map network — filter by connector type and speed.</p>
+    </div>
+  </div>
+
+  <!-- Tech stack -->
+  <div class="mb-16">
+    <p class="text-xs text-gray-400 uppercase tracking-widest mb-3">Under the hood</p>
+    <h2 class="text-2xl font-semibold text-gray-900 mb-8">Built with</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div class="border border-gray-100 rounded-sm p-4 text-center">
+        <p class="text-sm font-medium text-gray-900 mb-1">Node.js</p>
+        <p class="text-xs text-gray-400">Runtime</p>
+      </div>
+      <div class="border border-gray-100 rounded-sm p-4 text-center">
+        <p class="text-sm font-medium text-gray-900 mb-1">Express</p>
+        <p class="text-xs text-gray-400">Web framework</p>
+      </div>
+      <div class="border border-gray-100 rounded-sm p-4 text-center">
+        <p class="text-sm font-medium text-gray-900 mb-1">PostgreSQL</p>
+        <p class="text-xs text-gray-400">Database</p>
+      </div>
+      <div class="border border-gray-100 rounded-sm p-4 text-center">
+        <p class="text-sm font-medium text-gray-900 mb-1">EJS</p>
+        <p class="text-xs text-gray-400">Templating</p>
+      </div>
+      <div class="border border-gray-100 rounded-sm p-4 text-center">
+        <p class="text-sm font-medium text-gray-900 mb-1">Tailwind CSS</p>
+        <p class="text-xs text-gray-400">Styling</p>
+      </div>
+      <div class="border border-gray-100 rounded-sm p-4 text-center">
+        <p class="text-sm font-medium text-gray-900 mb-1">Leaflet.js</p>
+        <p class="text-xs text-gray-400">Maps</p>
+      </div>
+      <div class="border border-gray-100 rounded-sm p-4 text-center">
+        <p class="text-sm font-medium text-gray-900 mb-1">Lenis</p>
+        <p class="text-xs text-gray-400">Smooth scroll</p>
+      </div>
+      <div class="border border-gray-100 rounded-sm p-4 text-center">
+        <p class="text-sm font-medium text-gray-900 mb-1">Axios</p>
+        <p class="text-xs text-gray-400">HTTP client</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Data sources -->
+  <div class="mb-16">
+    <p class="text-xs text-gray-400 uppercase tracking-widest mb-3">Transparency</p>
+    <h2 class="text-2xl font-semibold text-gray-900 mb-8">Data sources</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <a href="https://www.kaggle.com/datasets/CooperUnion/cardataset" target="_blank" class="border border-gray-100 hover:border-emerald-300 rounded-sm p-5 transition group">
+        <p class="text-sm font-medium text-gray-900 mb-1 group-hover:text-emerald-600">Kaggle — Car Features & MSRP</p>
+        <p class="text-xs text-gray-400">11,914 vehicles with specs, pricing and fuel data by CooperUnion.</p>
+      </a>
+      <a href="https://vpic.nhtsa.dot.gov" target="_blank" class="border border-gray-100 hover:border-emerald-300 rounded-sm p-5 transition group">
+        <p class="text-sm font-medium text-gray-900 mb-1 group-hover:text-emerald-600">NHTSA vPIC API</p>
+        <p class="text-xs text-gray-400">Vehicle recall data, manufacturer details and vehicle type classifications from the US National Highway Traffic Safety Administration.</p>
+      </a>
+      <a href="https://openchargemap.org" target="_blank" class="border border-gray-100 hover:border-emerald-300 rounded-sm p-5 transition group">
+        <p class="text-sm font-medium text-gray-900 mb-1 group-hover:text-emerald-600">Open Charge Map</p>
+        <p class="text-xs text-gray-400">The world's largest open database of EV charging locations with real-time status and connector details.</p>
+      </a>
+      <a href="https://unsplash.com" target="_blank" class="border border-gray-100 hover:border-emerald-300 rounded-sm p-5 transition group">
+        <p class="text-sm font-medium text-gray-900 mb-1 group-hover:text-emerald-600">Unsplash</p>
+        <p class="text-xs text-gray-400">High quality vehicle photography sourced via the Unsplash API.</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- Built by -->
+  <div class="bg-gray-900 rounded-sm p-10 flex flex-col md:flex-row items-center justify-between gap-6">
+    <div>
+      <p class="text-xs text-emerald-400 uppercase tracking-widest mb-2">The builder</p>
+      <h2 class="text-2xl font-semibold text-white mb-2">Mitrev Design</h2>
+      <p class="text-gray-400 text-sm leading-relaxed max-w-md">Web development and design studio based in Stuttgart, Germany. Building modern web apps, dashboards and digital products for clients across Europe.</p>
+    </div>
+    <a href="https://mitrevdarko.dev" target="_blank" class="whitespace-nowrap bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-sm text-sm font-medium transition">
+      Visit Mitrev Design →
+    </a>
+  </div>
+
+</section>
+
+<%- include('partials/footer', { lang }) %>

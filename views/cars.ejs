@@ -1,0 +1,138 @@
+<%- include('partials/header', { navLinks, currentPath }) %>
+
+<section class="max-w-6xl mx-auto px-6 py-16">
+  <!-- Header -->
+  <div class="mb-10">
+    <h1 class="text-3xl font-semibold text-gray-900 mb-2"> <%= t.cars_page.carsTitle %></h1>
+    <p class="text-sm text-gray-400">Browse <%= totalCars %> vehicles across <%= totalBrands %> brands</p>
+  </div>
+
+  <!-- Search + Filters -->
+  <div class="flex flex-wrap gap-3 mb-8">
+    <input 
+      id="searchInput"
+      type="text" 
+      placeholder="Search make or model..."
+      class="flex-1 min-w-64 px-4 py-3 rounded-sm border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+    >
+    <button id="searchBtn" class="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-sm text-sm">
+      <%= t.cars_page.cars_button1 %>
+    </button>
+    <button id="resetBtn" class="border border-gray-200 text-gray-500 hover:border-emerald-500 hover:text-emerald-600 px-6 py-3 rounded-sm text-sm">
+      <%= t.cars_page.cars_button2 %>
+    </button>
+  </div>
+
+  <!-- Result count -->
+  <p id="resultCount" class="text-sm text-gray-400 mb-6"></p>
+
+  <!-- Car grid -->
+  <div id="carGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <% vehicles.forEach(vehicle => { %>
+    <div class="bg-white rounded-sm p-6 border border-gray-100">
+      <% if (vehicle.image_url) { %>
+        <img src="<%= vehicle.image_url %>" alt="<%= vehicle.make %> <%= vehicle.model %>" class="w-full h-40 object-cover rounded mb-4">
+      <% } else { %>
+        <div class="w-full h-40 bg-gray-100 rounded flex items-center justify-center mb-4">
+          <span class="text-4xl font-bold text-gray-200"><%= vehicle.make[0] %></span>
+        </div>
+      <% } %>
+      <h3 class="font-semibold text-gray-900 text-lg"><%= vehicle.make %> <%= vehicle.model %></h3>
+      <p class="text-sm text-gray-500 mt-1"><%= vehicle.year %> · <%= vehicle.vehicle_style %> · <%= vehicle.driven_wheels %></p>
+      <p class="text-emerald-600 font-semibold mt-2">$<%= vehicle.msrp ? vehicle.msrp.toLocaleString() : 'N/A' %></p>
+      <div class="flex gap-3 mt-2">
+        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full"><%= vehicle.fuel_type %></span>
+        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full"><%= vehicle.horsepower ? vehicle.horsepower + ' hp' : 'N/A' %></span>
+      </div>
+      <a href="/cars/<%= vehicle.make %>-<%= vehicle.model %>" class="inline-block mt-4 text-sm font-medium text-emerald-600 hover:text-emerald-700">
+        <%= t.cars_page.cars_button3 %> →
+      </a>
+    </div>
+    <% }) %>
+  </div>
+
+  <!-- Load more -->
+  <div class="text-center mt-10">
+    <button id="loadMore" class="border border-gray-200 text-gray-500 hover:border-emerald-500 hover:text-emerald-600 px-8 py-3 rounded-sm text-sm">
+      <%= t.cars_page.cars_button4 %>
+    </button>
+  </div>
+
+  <p id="noResults" class="hidden text-center text-gray-400 text-sm mt-10">No vehicles found.</p>
+
+</section>
+<%- include('partials/footer', { lang }) %>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const input      = document.getElementById('searchInput');
+  const searchBtn  = document.getElementById('searchBtn');
+  const resetBtn   = document.getElementById('resetBtn');
+  const grid       = document.getElementById('carGrid');
+  const noResults  = document.getElementById('noResults');
+  const resultCount = document.getElementById('resultCount');
+  const loadMoreBtn = document.getElementById('loadMore');
+
+  let offset = 24;
+
+  async function doSearch(append = false) {
+    const q     = input.value.trim();
+
+    const params = new URLSearchParams();
+    if (q) params.set('q', q);
+    if (append) params.set('offset', offset);
+
+    const res  = await fetch(`/cars/api/search?${params.toString()}`);
+    const cars = await res.json();
+
+    if (!append) {
+      offset = 24;
+      if (cars.length === 0) {
+        grid.innerHTML = '';
+        noResults.classList.remove('hidden');
+        resultCount.textContent = '';
+        return;
+      }
+      noResults.classList.add('hidden');
+      resultCount.textContent = `${cars.length}+ results`;
+      grid.innerHTML = cars.map(carCard).join('');
+    } else {
+      cars.forEach(v => grid.insertAdjacentHTML('beforeend', carCard(v)));
+      offset += 24;
+    }
+
+    loadMoreBtn.classList.toggle('hidden', cars.length < 24);
+  }
+
+  function carCard(v) {
+    return `
+      <div class="bg-white rounded-sm p-6 border border-gray-100">
+        ${v.image_url 
+          ? `<img src="${v.image_url}" alt="${v.make} ${v.model}" class="w-full h-40 object-cover rounded mb-4">`
+          : `<div class="w-full h-40 bg-gray-100 rounded flex items-center justify-center mb-4"><span class="text-4xl font-bold text-gray-200">${v.make[0]}</span></div>`
+        }
+        <h3 class="font-semibold text-gray-900 text-lg">${v.make} ${v.model}</h3>
+        <p class="text-sm text-gray-500 mt-1">${v.year} · ${v.vehicle_style} · ${v.driven_wheels}</p>
+        <p class="text-emerald-600 font-semibold mt-2">$${v.msrp ? v.msrp.toLocaleString() : 'N/A'}</p>
+        <div class="flex gap-3 mt-2">
+          <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">${v.fuel_type}</span>
+          <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">${v.horsepower ? v.horsepower + ' hp' : 'N/A'}</span>
+        </div>
+        <a href="/cars/${v.make}-${v.model}" class="inline-block mt-4 text-sm font-medium text-emerald-600 hover:text-emerald-700">
+          View Details →
+        </a>
+      </div>
+    `;
+  }
+  searchBtn.addEventListener('click', () => {
+  console.log('search clicked', input.value);
+  doSearch();
+  });
+  input.addEventListener('keydown', (e) => { if (e.key === 'Enter') doSearch(); });
+  
+  resetBtn.addEventListener('click', () => {
+    input.value = '';
+    location.reload();
+  });
+  loadMoreBtn.addEventListener('click', () => doSearch(true));
+});
+</script>

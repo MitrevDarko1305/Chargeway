@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chargeway helps you explore hybrid and electric vehicles, compare specs and find EV charging stations near you — all in one place.">
+  <meta name="keywords" content="electric cars, hybrid vehicles, EV charging stations, car search, electric vehicle specs, charging map, EV finder, hybrid cars, sustainable driving">
+  <meta name="author" content="Mitrev Design">
+  <meta property="og:title" content="Chargeway — Find Your Car. Find Your Charge.">
+  <meta property="og:description" content="Explore hybrid and electric vehicles, compare specs and find charging stations near you.">
+  <meta property="og:type" content="website">
+  <title>Chargeway</title>
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+  <style>
+    #mainNav {
+      transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+  </style>
+</head>
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <style>
+  #mainNav {
+    transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+</style>
+</head>
+<body class="bg-white text-gray-900 font-sans">
+
+<!-- Mobile drawer overlay -->
+<div id="drawerOverlay" class="fixed inset-0 bg-black/40 z-40 hidden opacity-0 transition-opacity duration-300"></div>
+
+<!-- Mobile side drawer -->
+<div id="mobileDrawer" class="fixed top-0 right-0 h-full w-72 bg-white z-50 transform translate-x-full transition-transform duration-300 ease-in-out shadow-2xl flex flex-col">
+  <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+    <a href="/" class="flex items-center gap-1 text-lg font-semibold">
+      <span>Charge<span class="text-emerald-500">way</span></span>
+      <i data-lucide="zap" class="w-5 h-5 text-emerald-500"></i>
+    </a>
+    <button id="closeDrawer" class="text-gray-400 hover:text-gray-700 transition">
+      <i data-lucide="x" class="w-5 h-5"></i>
+    </button>
+  </div>
+
+  <!-- Drawer nav links -->
+  <nav class="flex flex-col px-6 py-6 gap-1 flex-1">
+    <% navLinks.forEach(link => { %>
+    <a href="<%= link.url %>"
+      class="text-sm py-3 px-4 rounded-lg <%= currentPath === link.url ? 'bg-emerald-50 text-emerald-600 font-medium' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900' %> transition-colors">
+      <%= link.label %>
+    </a>
+    <% }) %>
+  </nav>
+
+  <!-- Drawer bottom -->
+  <div class="px-6 py-6 border-t border-gray-100">
+    <a href="/chargers" class="block text-center text-sm font-medium text-white bg-emerald-500 hover:bg-emerald-600 px-4 py-3 rounded-full transition-colors mb-4">
+      <%= t.hero.navbutton %>
+    </a>
+    <div class="flex items-center justify-center gap-3">
+      <a href="/lang/en" class="text-xs font-medium <%= lang === 'en' ? 'text-emerald-500' : 'text-gray-400 hover:text-gray-700' %> transition-colors">EN</a>
+      <span class="text-gray-200">|</span>
+      <a href="/lang/de" class="text-xs font-medium <%= lang === 'de' ? 'text-emerald-500' : 'text-gray-400 hover:text-gray-700' %> transition-colors">DE</a>
+    </div>
+  </div>
+</div>
+
+<nav id="mainNav" class="w-full border-b border-gray-100 px-6 py-4  transition-all duration-300">
+  <div class="max-w-6xl mx-auto flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="/" class="text-lg font-semibold tracking-tight">
+      <div class="flex items-center gap-1">
+        <span>Charge<span class="text-emerald-500">way</span></span>
+        <i data-lucide="zap" class="w-6 h-6 text-emerald-500"></i>
+      </div>
+    </a>
+
+    <!-- Desktop nav links -->
+    <ul class="hidden md:flex items-center gap-8">
+      <% navLinks.forEach(link => { %>
+      <li>
+        <a href="<%= link.url %>"
+          class="text-sm <%= currentPath === link.url ? 'text-emerald-500 font-medium' : 'text-gray-500 hover:text-emerald-500' %> transition-colors">
+          <%= link.label %>
+        </a>
+      </li>
+      <% }) %>
+    </ul>
+
+    <div class="flex items-center gap-4">
+      <!-- Desktop CTA -->
+      <a href="/chargers" class="hidden md:inline-flex text-sm font-medium text-white bg-emerald-500 hover:bg-emerald-600 px-4 py-2 rounded-full transition-colors">
+        <%= t.hero.navbutton %>
+      </a>
+
+      <!-- Language switcher -->
+      <div class="hidden md:flex items-center gap-2">
+        <a href="/lang/en" class="text-xs font-medium <%= lang === 'en' ? 'text-emerald-500' : 'text-gray-400 hover:text-gray-700' %> transition-colors">EN</a>
+        <span class="text-gray-200">|</span>
+        <a href="/lang/de" class="text-xs font-medium <%= lang === 'de' ? 'text-emerald-500' : 'text-gray-400 hover:text-gray-700' %> transition-colors">DE</a>
+      </div>
+
+      <!-- Hamburger button (mobile only) -->
+      <button id="openDrawer" class="md:hidden text-gray-500 hover:text-gray-900 transition">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+  </div>
+</nav>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Lenis
+  const lenis = new Lenis({
+    duration: 3.5,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  });
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+
+  // Mobile drawer
+  const openBtn = document.getElementById('openDrawer');
+  const closeBtn = document.getElementById('closeDrawer');
+  const drawer = document.getElementById('mobileDrawer');
+  const overlay = document.getElementById('drawerOverlay');
+
+  if (openBtn && closeBtn && drawer && overlay) {
+    function openDrawer() {
+      drawer.classList.remove('translate-x-full');
+      overlay.classList.remove('hidden');
+      setTimeout(() => overlay.classList.add('opacity-100'), 10);
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+      drawer.classList.add('translate-x-full');
+      overlay.classList.remove('opacity-100');
+      setTimeout(() => overlay.classList.add('hidden'), 300);
+      document.body.style.overflow = '';
+    }
+    openBtn.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+  }
+
+  // Sticky nav
+  const nav = document.getElementById('mainNav');
+  const hero = document.getElementById('hero');
+
+  lenis.on('scroll', ({ scroll }) => {
+    const threshold = hero ? hero.offsetHeight : 400;
+    if (scroll > threshold) {
+      nav.classList.add('fixed', 'top-0', 'left-0', 'right-0', 'z-[9999]', 'bg-white', 'shadow-sm');
+      nav.style.opacity = '1';
+      nav.style.transform = 'translateY(0)';
+    } else if (scroll > 80) {
+      nav.classList.remove('fixed', 'top-0', 'left-0', 'right-0', 'z-[9999]', 'bg-white', 'shadow-sm');
+      nav.style.opacity = '0';
+      nav.style.transform = 'translateY(-15px)';
+    } else {
+      nav.classList.remove('fixed', 'top-0', 'left-0', 'right-0', 'z-[9999]', 'bg-white', 'shadow-sm');
+      nav.style.opacity = '1';
+      nav.style.transform = 'translateY(0)';
+    }
+  });
+
+  lucide.createIcons();
+
+});
+</script>
