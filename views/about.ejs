@@ -4,34 +4,64 @@
 
   <!-- Hero -->
   <div class="max-w-2xl mb-16">
-    <p class="text-xs text-gray-400 uppercase tracking-widest mb-3">About Chargeway</p>
-    <h1 class="text-4xl font-semibold text-gray-900 mb-4">Find your car. Find your charge.</h1>
-    <p class="text-gray-500 leading-relaxed">Chargeway is a vehicle discovery platform built for the modern driver — whether you're shopping for your next EV, comparing specs across brands, or just trying to find the nearest charging station on your commute.</p>
+    <p class="text-xs text-gray-400 uppercase tracking-widest mb-3"><%= t.about_page.about_span %></p>
+    <h1 class="text-4xl font-semibold text-gray-900 mb-4"><%= t.about_page.about_title %></h1>
+    <p class="text-gray-500 leading-relaxed"><%= t.about_page.about_subtitle %></p>
   </div>
 
   <!-- What it does -->
   <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
     <div class="bg-gray-50 rounded-sm p-6">
       <p class="text-2xl mb-3">🚗</p>
-      <h3 class="font-semibold text-gray-900 mb-2">Explore vehicles</h3>
-      <p class="text-xs text-gray-500 leading-relaxed">Browse over 11,000 cars across 48 brands — from everyday commuters to high-performance exotics. Filter by fuel type, body style and price.</p>
+      <h3 class="font-semibold text-gray-900 mb-2"><%= t.about_page.explore_title1 %></h3>
+      <p class="text-xs text-gray-500 leading-relaxed"><%= t.about_page.explore_description1 %></p>
     </div>
     <div class="bg-gray-50 rounded-sm p-6">
       <p class="text-2xl mb-3">📊</p>
-      <h3 class="font-semibold text-gray-900 mb-2">Compare specs</h3>
-      <p class="text-xs text-gray-500 leading-relaxed">Get detailed specs, safety recall information and manufacturer data pulled live from the NHTSA database for every vehicle.</p>
+      <h3 class="font-semibold text-gray-900 mb-2"><%= t.about_page.explore_title2 %></h3>
+      <p class="text-xs text-gray-500 leading-relaxed"><%= t.about_page.explore_description2 %></p>
     </div>
     <div class="bg-gray-50 rounded-sm p-6">
       <p class="text-2xl mb-3">⚡</p>
-      <h3 class="font-semibold text-gray-900 mb-2">Find chargers</h3>
-      <p class="text-xs text-gray-500 leading-relaxed">Locate nearby EV charging stations anywhere in the world using the Open Charge Map network — filter by connector type and speed.</p>
+      <h3 class="font-semibold text-gray-900 mb-2"><%= t.about_page.explore_title3 %></h3>
+      <p class="text-xs text-gray-500 leading-relaxed"><%= t.about_page.explore_description3 %></p>
     </div>
   </div>
 
+  <!-- Bio Section -->
+  <section class="py-24 px-6 max-w-5xl mx-auto">
+  <p class="text-xs tracking-widest text-gray-400 uppercase mb-3"><%= t.about_page.the_developer %></p>
+  <h2 class="text-3xl font-bold text-gray-900 mb-12"><%= t.about_page.developer_title %></h2>
+
+  <div class="flex flex-col md:flex-row items-start gap-10 bg-gray-50 rounded-sm p-8">
+    
+    <div class="flex-1">
+      <h3 class="text-xl font-semibold text-gray-900 mb-1"><%= t.about_page.developer_name %></h3>
+      <p class="text-sm text-gray-400 mb-4"><%= t.about_page.developer_founder %></p>
+      <p class="text-gray-600 leading-relaxed mb-6">
+        <%= t.about_page.developer_description %>
+      </p>
+
+      <div class="flex gap-4">
+        <a href="https://mitrevdarko.dev" target="_blank" class="text-sm font-medium text-gray-900 border border-gray-300 px-4 py-2 rounded-sm hover:bg-gray-100 transition">
+          <%= t.about_page.developer_btn1 %>
+        </a>
+        <a href="https://github.com/MitrevDarko1305" target="_blank" class="text-sm font-medium text-gray-900 border border-gray-300 px-4 py-2 rounded-sm hover:bg-gray-100 transition">
+          <%= t.about_page.developer_btn2 %>
+        </a>
+        <a href="https://linkedin.com/in/darko-mitrev" target="_blank" class="text-sm font-medium text-gray-900 border border-gray-300 px-4 py-2 rounded-sm hover:bg-gray-100 transition">
+          <%= t.about_page.developer_btn3 %>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
   <!-- Tech stack -->
   <div class="mb-16">
-    <p class="text-xs text-gray-400 uppercase tracking-widest mb-3">Under the hood</p>
-    <h2 class="text-2xl font-semibold text-gray-900 mb-8">Built with</h2>
+    <p class="text-xs text-gray-400 uppercase tracking-widest mb-3"><%= t.about_page.under_span %></p>
+    <h2 class="text-2xl font-semibold text-gray-900 mb-8"><%= t.about_page.under_title %></h2>
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
       <div class="border border-gray-100 rounded-sm p-4 text-center">
         <p class="text-sm font-medium text-gray-900 mb-1">Node.js</p>
@@ -75,19 +105,19 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <a href="https://www.kaggle.com/datasets/CooperUnion/cardataset" target="_blank" class="border border-gray-100 hover:border-emerald-300 rounded-sm p-5 transition group">
         <p class="text-sm font-medium text-gray-900 mb-1 group-hover:text-emerald-600">Kaggle — Car Features & MSRP</p>
-        <p class="text-xs text-gray-400">11,914 vehicles with specs, pricing and fuel data by CooperUnion.</p>
+        <p class="text-xs text-gray-400"><%= t.about_page.data_key1 %></p>
       </a>
       <a href="https://vpic.nhtsa.dot.gov" target="_blank" class="border border-gray-100 hover:border-emerald-300 rounded-sm p-5 transition group">
         <p class="text-sm font-medium text-gray-900 mb-1 group-hover:text-emerald-600">NHTSA vPIC API</p>
-        <p class="text-xs text-gray-400">Vehicle recall data, manufacturer details and vehicle type classifications from the US National Highway Traffic Safety Administration.</p>
+        <p class="text-xs text-gray-400"><%= t.about_page.data_key2 %></p>
       </a>
       <a href="https://openchargemap.org" target="_blank" class="border border-gray-100 hover:border-emerald-300 rounded-sm p-5 transition group">
         <p class="text-sm font-medium text-gray-900 mb-1 group-hover:text-emerald-600">Open Charge Map</p>
-        <p class="text-xs text-gray-400">The world's largest open database of EV charging locations with real-time status and connector details.</p>
+        <p class="text-xs text-gray-400"><%= t.about_page.data_key3 %></p>
       </a>
       <a href="https://unsplash.com" target="_blank" class="border border-gray-100 hover:border-emerald-300 rounded-sm p-5 transition group">
         <p class="text-sm font-medium text-gray-900 mb-1 group-hover:text-emerald-600">Unsplash</p>
-        <p class="text-xs text-gray-400">High quality vehicle photography sourced via the Unsplash API.</p>
+        <p class="text-xs text-gray-400"><%= t.about_page.data_key4 %></p>
       </a>
     </div>
   </div>
@@ -95,12 +125,12 @@
   <!-- Built by -->
   <div class="bg-gray-900 rounded-sm p-10 flex flex-col md:flex-row items-center justify-between gap-6">
     <div>
-      <p class="text-xs text-emerald-400 uppercase tracking-widest mb-2">The builder</p>
-      <h2 class="text-2xl font-semibold text-white mb-2">Mitrev Design</h2>
-      <p class="text-gray-400 text-sm leading-relaxed max-w-md">Web development and design studio based in Stuttgart, Germany. Building modern web apps, dashboards and digital products for clients across Europe.</p>
+      <p class="text-xs text-emerald-400 uppercase tracking-widest mb-2"><%= t.about_page.built_span %></p>
+      <h2 class="text-2xl font-semibold text-white mb-2"><%= t.about_page.built_title %></h2>
+      <p class="text-gray-400 text-sm leading-relaxed max-w-md"><%= t.about_page.built_desc %></p>
     </div>
     <a href="https://mitrevdarko.dev" target="_blank" class="whitespace-nowrap bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-sm text-sm font-medium transition">
-      Visit Mitrev Design →
+      <%= t.about_page.built_btn %> →
     </a>
   </div>
 

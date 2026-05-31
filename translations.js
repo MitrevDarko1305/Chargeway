@@ -136,8 +136,53 @@ export const translations = {
       charging_connector_description1: "- 20h for a full charge - Best for overnight home charging.",
       charging_connector_description2: "4 - 8h for a full charge. Best for workplace or shopping",
       charging_connector_description3: "20 - 45 min for 80% charge. Best for highway stops."
-    }
+    },
 
+    // About Page //
+    about_page: {
+      about_span: "ABOUT CHARGEWAY",
+      about_title:"Find your car. Find your charge",
+      about_subtitle: "Chargeway is a vehicle discovery platform built for the modern driver - whether you are shopping for your next EV, comparing specs across brands, or just trying to find the nearest charging station on your commute.",
+
+      // Table Comparison // 
+      explore_title1: "Explore vehicles",
+      explore_title2: "Compare specs",
+      explore_title3: "Find chargers",
+
+      explore_description1: "Browse over 11.000 cars across 48 brands,— from everyday commuters to high-performance exotics. Filter by fuel type, body style and price.",
+      explore_description2: "Get detailed specs, safety recall information and manufacturer data pulled live from the NHTSA database for every vehicle.",
+      explore_description3: "Locate nearby EV charging stations anywhere in the world using the Open Charge Map network — filter by connector type and speed.",
+
+      // The Developer // 
+      the_developer: "THE DEVELOPER",
+      developer_title: "Meet The Developer",
+      developer_name: "Darko Mitrev",
+      developer_founder: "Founder, Mitrev Design",
+      developer_description: "Mitrev Design is a solo web design and development studio focused on building clean, functional digital products. Chargeway is one of several projects built to solve real problems — combining modern full-stack development with thoughtful UX. Every project is designed and developed from scratch, with attention to performance, detail, and user experience.",
+
+      developer_btn1: "Our Studio",
+      developer_btn2: "GitHub",
+      developer_btn3: "Linkedin",
+
+      // Under The Hood //
+      under_span: "UNDER THE HOOD",
+      under_title: "Built with",
+
+      // Data Source //
+      data_span: "DATA SOURCE",
+      data_title: "Data sources",
+
+      data_key1: "11,914 vehicles with specs, pricing and fuel data by CooperUnion.",
+      data_key2: "Vehicle recall data, manufacturer details and vehicle type classifications from the US National Highway Traffic Safety Administration.",
+      data_key3: "The world's largest open database of EV charging locations with real-time status and connector details",
+      data_key4: "High quality vehicle photography sourced via the Unsplash API",
+
+      // Studio Data //
+      built_span: "THE BUILDER",
+      built_title: "Mitrev Design",
+      built_desc: "Web development and design studio based in Stuttgart, Germany. Building modern web apps, dashboards and digital products for clients across Europe.",
+      built_btn: "Visit Mitrev Design"
+     }
 
   },
   de: {
@@ -271,5 +316,46 @@ export const translations = {
     charging_connector_description1: "~20 Std. für eine Vollladung – Am besten für das Laden über Nacht zu Hause.",
     charging_connector_description2: "4–8 Std. für eine Vollladung. Am besten für Arbeit oder Einkaufen.",
     charging_connector_description3: "20–45 Min. für 80 % Ladung. Am besten für Autobahn-Stopps."
-}
-  }}
+   },
+
+    // About Page //
+    about_page: {
+    about_span: "ÜBER CHARGEWAY",
+    about_title: "Finde dein Auto. Finde deine Ladestation.",
+    about_subtitle: "Chargeway ist eine Fahrzeug-Entdeckungsplattform für den modernen Fahrer — egal ob du nach deinem nächsten Elektroauto suchst, Modelle miteinander vergleichst oder einfach die nächste Ladestation auf deinem Weg findest.",
+    
+     // Table Comparison //
+    explore_title1: "Fahrzeuge entdecken",
+    explore_title2: "Specs vergleichen",
+    explore_title3: "Ladestationen finden",
+
+    explore_description1: "Durchsuche über 11.000 Autos aus 48 Marken — von alltagstauglichen Pendelfahrzeugen bis hin zu Hochleistungs-Exoten. Filtere nach Kraftstofftyp, Karosserieform und Preis.",
+    explore_description2: "Erhalte detaillierte technische Daten, Sicherheitsrückrufinformationen und Herstellerdaten, die live aus der NHTSA-Datenbank abgerufen werden — für jedes Fahrzeug.",
+    explore_description3: "Finde EV-Ladestationen in deiner Nähe — weltweit — über das Open Charge Map Netzwerk. Filtere nach Steckertyp und Ladegeschwindigkeit.",
+
+    // The Developer //
+   the_developer: "DER ENTWICKLER",
+   developer_title: "Der Entwickler",
+   developer_name: "Darko Mitrev",
+   developer_founder: "Gründer, Mitrev Design",
+   developer_description: "Mitrev Design ist ein Solo-Studio für Webdesign und -entwicklung, das sich auf den Aufbau sauberer, funktionaler digitaler Produkte spezialisiert hat. Chargeway ist eines von mehreren Projekten, die entwickelt wurden, um echte Probleme zu lösen — mit modernem Full-Stack-Development und durchdachter UX. Jedes Projekt wird von Grund auf neu gestaltet und entwickelt, mit Fokus auf Performance, Details und Benutzererfahrung.",
+   developer_btn1: "Unser Studio",
+   developer_btn2: "GitHub",
+   developer_btn3: "LinkedIn",
+
+   // Under The Hood //
+   under_span: "UNTER DER HAUBE",
+   under_title: "Entwickelt mit",
+
+   data_key1: "11.914 Fahrzeuge mit technischen Daten, Preisen und Kraftstoffinformationen von CooperUnion.",
+   data_key2: "Fahrzeugrückrufdaten, Herstellerinformationen und Fahrzeugtypklassifikationen von der US-amerikanischen National Highway Traffic Safety Administration.",
+   data_key3: "Die weltweit größte offene Datenbank für EV-Ladestationen mit Echtzeit-Status und Steckerdetails.",
+   data_key4: "Hochwertige Fahrzeugfotografie, bereitgestellt über die Unsplash API.",
+
+   // Studio Data //
+   built_span: "DER ENTWICKLER",
+   built_title: "Mitrev Design",
+   built_desc: "Web-Entwicklungs- und Designstudio mit Sitz in Stuttgart, Deutschland. Wir entwickeln moderne Web-Apps, Dashboards und digitale Produkte für Kunden in ganz Europa.",
+   built_btn: "Besuch Mitrev Design"
+   }
+   }}
