@@ -1,6 +1,6 @@
 <%- include('partials/header', { navLinks, currentPath }) %>
 
-<section class="max-w-6xl mx-auto px-6 py-16">
+<section class="max-w-6xl mx-auto px-6 md:py-16 pb-12 pt-16">
 
   <!-- Hero -->
   <div class="max-w-2xl mb-16">
@@ -29,9 +29,9 @@
   </div>
 
   <!-- Bio Section -->
-  <section class="py-24 px-6 max-w-5xl mx-auto">
+  <section class="md:py-24 pt-10 pb-24 px-0 md:px-6 max-w-5xl mx-auto">
   <p class="text-xs tracking-widest text-gray-400 uppercase mb-3"><%= t.about_page.the_developer %></p>
-  <h2 class="text-3xl font-bold text-gray-900 mb-12"><%= t.about_page.developer_title %></h2>
+  <h2 class="text-3xl font-bold text-gray-900 md:mb-12 mb-6"><%= t.about_page.developer_title %></h2>
 
   <div class="flex flex-col md:flex-row items-start gap-10 bg-gray-50 rounded-sm p-8">
     
@@ -59,7 +59,7 @@
 </section>
 
   <!-- Tech stack -->
-  <div class="mb-16">
+  <div class="md:mb-16 mb-28 mt-0 md:mt-0">
     <p class="text-xs text-gray-400 uppercase tracking-widest mb-3"><%= t.about_page.under_span %></p>
     <h2 class="text-2xl font-semibold text-gray-900 mb-8"><%= t.about_page.under_title %></h2>
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -123,7 +123,7 @@
   </div>
 
   <!-- Built by -->
-  <div class="bg-gray-900 rounded-sm p-10 flex flex-col md:flex-row items-center justify-between gap-6">
+  <div class="bg-gray-900  rounded-sm p-10  flex flex-col md:flex-row items-center justify-between gap-6">
     <div>
       <p class="text-xs text-emerald-400 uppercase tracking-widest mb-2"><%= t.about_page.built_span %></p>
       <h2 class="text-2xl font-semibold text-white mb-2"><%= t.about_page.built_title %></h2>

@@ -136,3 +136,20 @@ document.addEventListener('DOMContentLoaded', () => {
   loadMoreBtn.addEventListener('click', () => doSearch(true));
 });
 </script>
+
+<script>
+function applyMobileLimit() {
+  const cards = document.querySelectorAll('#carGrid > div');
+  const isMobile = window.innerWidth < 768;
+  cards.forEach((card, index) => {
+    if (isMobile && index >= 8) {
+      card.classList.add('hidden');
+    } else {
+      card.classList.remove('hidden');
+    }
+  });
+}
+
+applyMobileLimit();
+window.addEventListener('resize', applyMobileLimit);
+</script>
